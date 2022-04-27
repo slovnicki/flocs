@@ -1,0 +1,17 @@
+name: markdown_page
+description: Creates a Screen that renders markdown and has a static BeamPage for routing.
+
+version: 0.1.0+1
+
+environment:
+  mason: ">=0.1.0-dev <0.1.0"
+
+vars:
+  name:
+    type: string
+    description: Markdown asset name
+    prompt: What is the Markdown asset name?
+  package:
+    type: string
+    description: The name of original Flocs app
+    prompt: What is the name of Flocs app?

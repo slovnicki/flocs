@@ -1,0 +1,33 @@
+name: app
+description: Example app
+
+publish_to: "none" # Remove this line if you wish to publish to pub.dev
+
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.16.1 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  beamer: ^1.4.1
+  url_launcher: ^6.0.20
+  markdown: ^5.0.0
+  flutter_markdown: ^0.6.10
+  google_fonts: ^2.3.1
+  # This fork contains the ability to select the text in the code snippet:
+  # (see https://github.com/git-touch/highlight.dart/pull/25)
+  flutter_highlight:
+    git:
+      url: https://github.com/shreyas1599/highlight.dart
+      path: flutter_highlight
+
+dev_dependencies:
+  flutter_lints: ^1.0.4
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/markdown/
