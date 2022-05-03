@@ -5,12 +5,12 @@ class Header extends StatefulWidget {
     Key? key,
     required this.isDarkTheme,
     required this.onThemeSwitch,
-    required this.openNavigationSidebar,
+    this.openNavigationSidebar,
   }) : super(key: key);
 
   final bool isDarkTheme;
   final void Function(bool) onThemeSwitch;
-  final void Function() openNavigationSidebar;
+  final void Function()? openNavigationSidebar;
 
   @override
   State<Header> createState() => _HeaderState();
@@ -34,10 +34,22 @@ class _HeaderState extends State<Header> {
       color: theme.primaryColor,
       child: Row(
         children: [
-          const SizedBox(width: 16.0),
-          Text(
-            'Flocs',
-            style: theme.textTheme.headline6!.copyWith(color: Colors.white),
+          if (widget.openNavigationSidebar != null) ...[
+            Padding(
+              padding: const EdgeInsets.all(16.0),
+              child: InkWell(
+                onTap: widget.openNavigationSidebar,
+                child: const Icon(Icons.menu),
+              ),
+            ),
+            const Spacer(),
+          ],
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Text(
+              '{{name.titleCase()}}',
+              style: theme.textTheme.headline6!.copyWith(color: Colors.white),
+            ),
           ),
           const Spacer(),
           IconButton(

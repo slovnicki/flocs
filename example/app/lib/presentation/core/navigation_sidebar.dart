@@ -2,13 +2,16 @@ import 'package:beamer/beamer.dart';
 import 'package:flutter/material.dart';
 
 class NavigationSidebar extends StatefulWidget {
-  const NavigationSidebar({Key? key}) : super(key: key);
+  const NavigationSidebar({Key? key, this.closeDrawer}) : super(key: key);
+
+  final void Function()? closeDrawer;
 
   @override
   State<NavigationSidebar> createState() => _NavigationSidebarState();
 }
 
 class _NavigationSidebarState extends State<NavigationSidebar> {
+  late bool _isDrawer;
   late BeamerDelegate _beamer;
 
   void _setStateListener() => setState(() {});
@@ -16,6 +19,7 @@ class _NavigationSidebarState extends State<NavigationSidebar> {
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
+    _isDrawer = widget.closeDrawer != null;
     _beamer = Beamer.of(context);
     _beamer.removeListener(_setStateListener);
     WidgetsBinding.instance!.addPostFrameCallback(
@@ -26,29 +30,44 @@ class _NavigationSidebarState extends State<NavigationSidebar> {
   @override
   Widget build(BuildContext context) {
     final path = _beamer.configuration.location!;
-    return SizedBox(
-      width: 256,
-      child: Column(
-        children: [
-          NavigationButton(
-            text: 'Introduction',
-            isSelected: path == '/',
-            onTap: () => _beamer.beamToNamed('/'),
+    return Padding(
+      padding: EdgeInsets.only(top: _isDrawer ? kToolbarHeight : 0.0),
+      child: SizedBox(
+        width: 256,
+        child: MaybeDrawer(
+          isDrawer: _isDrawer,
+          child: Column(
+            children: [
+              NavigationButton(
+                text: 'Introduction',
+                isSelected: path == '/',
+                onTap: () {
+                  _beamer.beamToNamed('/');
+                  widget.closeDrawer?.call();
+                },
+              ),
+              
+                NavigationButton(
+                  text: 'Second Topic',
+                  isSelected: path == '/second_topic',
+                  onTap: () {
+                     _beamer.beamToNamed('/second_topic');
+                     widget.closeDrawer?.call();
+                  },
+                ),
+              
+                NavigationButton(
+                  text: 'First Topic',
+                  isSelected: path == '/first_topic',
+                  onTap: () {
+                     _beamer.beamToNamed('/first_topic');
+                     widget.closeDrawer?.call();
+                  },
+                ),
+              
+            ],
           ),
-          
-            NavigationButton(
-              text: 'Second Topic',
-              isSelected: path == '/second_topic',
-              onTap: () => _beamer.beamToNamed('/second_topic'),
-            ),
-          
-            NavigationButton(
-              text: 'First Topic',
-              isSelected: path == '/first_topic',
-              onTap: () => _beamer.beamToNamed('/first_topic'),
-            ),
-          
-        ],
+        ),
       ),
     );
   }
@@ -57,6 +76,22 @@ class _NavigationSidebarState extends State<NavigationSidebar> {
   void dispose() {
     _beamer.removeListener(_setStateListener);
     super.dispose();
+  }
+}
+
+class MaybeDrawer extends StatelessWidget {
+  const MaybeDrawer({
+    Key? key,
+    this.isDrawer = false,
+    required this.child,
+  }) : super(key: key);
+
+  final bool isDrawer;
+  final Widget child;
+
+  @override
+  Widget build(BuildContext context) {
+    return isDrawer ? Drawer(child: child) : child;
   }
 }
 
