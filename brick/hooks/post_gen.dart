@@ -20,7 +20,7 @@ Future<void> run(HookContext context) async {
   final generator = await MasonGenerator.fromBrick(
     Brick.git(
       GitPath(
-        'https://github.com/felangel/flocs',
+        'https://github.com/slovnicki/flocs',
         path: 'brick/bricks/markdown_page',
       ),
     ),
