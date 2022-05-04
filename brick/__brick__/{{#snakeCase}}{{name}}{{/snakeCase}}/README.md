@@ -1,3 +1,0 @@
-# {{#titleCase}}{{name}}{{/titleCase}}
-
-{{description}}

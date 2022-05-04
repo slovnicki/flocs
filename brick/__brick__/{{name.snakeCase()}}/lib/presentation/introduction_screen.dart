@@ -6,7 +6,7 @@ class IntroductionScreen extends StatelessWidget {
 
   static BeamPage page = const BeamPage(
     key: ValueKey('introduction'),
-    title: '{{#titleCase}}{{name}}{{/titleCase}}',
+    title: '{{name.titleCase()}}',
     child: IntroductionScreen(),
   );
 
@@ -15,7 +15,7 @@ class IntroductionScreen extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(32.0),
       child: Text(
-        'Welcome to {{#titleCase}}{{name}}{{/titleCase}}!',
+        'Welcome to {{name.titleCase()}}!',
         style: Theme.of(context).textTheme.headline3,
         textAlign: TextAlign.center,
       ),

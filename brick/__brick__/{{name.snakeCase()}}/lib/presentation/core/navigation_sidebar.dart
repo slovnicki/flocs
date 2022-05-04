@@ -48,10 +48,10 @@ class _NavigationSidebarState extends State<NavigationSidebar> {
               ),
               {{#file_names}}
                 NavigationButton(
-                  text: '{{#titleCase}}{{file_name}}{{/titleCase}}',
-                  isSelected: path == '/{{#snakeCase}}{{file_name}}{{/snakeCase}}',
+                  text: '{{file_name.titleCase()}}',
+                  isSelected: path == '/{{file_name.snakeCase()}}',
                   onTap: () {
-                     _beamer.beamToNamed('/{{#snakeCase}}{{file_name}}{{/snakeCase}}');
+                     _beamer.beamToNamed('/{{file_name.snakeCase()}}');
                      widget.closeDrawer?.call();
                   },
                 ),

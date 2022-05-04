@@ -18,7 +18,12 @@ Future<void> run(HookContext context) async {
   context.logger.info('Creating screens...');
   // --------------------------------------------------------------------------
   final generator = await MasonGenerator.fromBrick(
-    Brick.path('../brick/bricks/markdown_page'),
+    Brick.git(
+      GitPath(
+        'https://github.com/felangel/flocs',
+        path: 'brick/bricks/markdown_page',
+      ),
+    ),
   );
   for (final fileNameMap in fileNames) {
     final fileName = fileNameMap['file_name'];
