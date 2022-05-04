@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_markdown/flutter_markdown.dart';
 import 'package:url_launcher/url_launcher.dart';
-import 'package:{{#snakeCase}}{{name}}{{/snakeCase}}/presentation/core/code_snippet.dart';
+import 'package:{{name.snakeCase()}}/presentation/core/code_snippet.dart';
 
 class MarkdownScreen extends StatelessWidget {
   const MarkdownScreen({Key? key, required this.mdAsset}) : super(key: key);

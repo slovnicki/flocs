@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:beamer/beamer.dart';
-import 'package:{{#snakeCase}}{{name}}{{/snakeCase}}/application/routing.dart';
-import 'package:{{#snakeCase}}{{name}}{{/snakeCase}}/presentation/core/header.dart';
-import 'package:{{#snakeCase}}{{name}}{{/snakeCase}}/presentation/core/navigation_sidebar.dart';
+import 'package:{{name.snakeCase()}}/application/routing.dart';
+import 'package:{{name.snakeCase()}}/presentation/core/header.dart';
+import 'package:{{name.snakeCase()}}/presentation/core/navigation_sidebar.dart';
 
 class App extends StatefulWidget {
   const App({Key? key}) : super(key: key);
