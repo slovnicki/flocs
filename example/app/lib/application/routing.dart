@@ -12,9 +12,9 @@ final rootBeamerDelegate = BeamerDelegate(
     routes: {
       '/': (_,__,___) => IntroductionScreen.page,
       
-        '/second_topic': (_,__,___) =>  SecondTopicScreen.page,
+        '/second-topic': (_,__,___) =>  SecondTopicScreen.page,
       
-        '/first_topic': (_,__,___) =>  FirstTopicScreen.page,
+        '/first-topic': (_,__,___) =>  FirstTopicScreen.page,
       
     },
   ),

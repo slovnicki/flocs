@@ -1,3 +1,3 @@
 # App
 
-flocs example app
+Flocs example app

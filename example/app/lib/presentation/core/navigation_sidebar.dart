@@ -49,18 +49,18 @@ class _NavigationSidebarState extends State<NavigationSidebar> {
               
                 NavigationButton(
                   text: 'Second Topic',
-                  isSelected: path == '/second_topic',
+                  isSelected: path == '/second-topic',
                   onTap: () {
-                     _beamer.beamToNamed('/second_topic');
+                     _beamer.beamToNamed('/second-topic');
                      widget.closeDrawer?.call();
                   },
                 ),
               
                 NavigationButton(
                   text: 'First Topic',
-                  isSelected: path == '/first_topic',
+                  isSelected: path == '/first-topic',
                   onTap: () {
-                     _beamer.beamToNamed('/first_topic');
+                     _beamer.beamToNamed('/first-topic');
                      widget.closeDrawer?.call();
                   },
                 ),

@@ -1,5 +1,5 @@
 name: app
-description: flocs example app
+description: Flocs example app
 
 publish_to: "none" # Remove this line if you wish to publish to pub.dev
 
