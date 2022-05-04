@@ -1,6 +1,7 @@
 name: flocs
 description: A brick that creates a Flutter web app from Markdown assets.
 version: 0.1.0+1
+repository: https://github.com/slovnicki/flocs/tree/master/brick
 
 environment:
   mason: ">=0.1.0-dev <0.1.0"
